@@ -6,17 +6,31 @@ as an underlying object and datastream storage.
 
 akubra-hdfs is still in an early development state and in no way ready for production use!
 
-Installation instructions (Fedora Commons 3.6.2, Hadoop 1.0.3):
+Installation instructions (Fedora Commons 3.7.1, Hadoop 2.3.0):
 ---------------------------------------------------------------
 
 ### Dependencies
 
 Copy the following dependencies to your fedora webapp's WEB-INF/lib directory:
-* akubra-hdfs-0.0.1-SNAPSHOT.jar (can be found in target/ after building the project)
-* hadoop-core-1.0.3.jar from $HADOOP_HOME/
-* hadoop-client-1.0.3.jar from $HADOOP_HOME/
-* commons-configuration-1.6.jar from $HADOOP_HOME/lib/
-* commons-lang-2.4.jar from $HADOOP_HOME/lib/ 
+
+From $HADOOP_HOME/lib/:
++ commons-cli-1.2.jar
++ commons-configuration-1.6.jar
++ commons-lang-2.6.jar
++ guava-11.0.2.jar
++ protobuf-java-2.5.0.jar
+
+From $HADOOP_HOME/:
++ hadoop-auth-2.3.0.jar
++ hadoop-common-2.3.0.jar
++ hadoop-hdfs-2.3.0.jar
+
+From target/ (after building the project):
++ akubra-hdfs-0.0.1-SNAPSHOT.jar
+
+Remove the following dependencies from your fedora webapp's WEB-INF/lib directory:
+
+- google-collections-1.0.jar
 
 
 ### Configuration
@@ -39,7 +53,7 @@ Open the file ```$FEDORA_HOME/server/config/spring/akubra-llstore.xml``` and edi
 
 	<bean name="fsDatastreamStoreMapper" class="de.fiz.akubra.hdfs.HDFSIdMapper" singleton="true">
 		<constructor-arg ref="fsDatastreamStore"/>
-	  </bean>
+	</bean>
 
 
 ### License
